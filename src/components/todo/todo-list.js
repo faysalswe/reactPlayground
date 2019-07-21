@@ -1,7 +1,6 @@
 import React from 'react';
 import TodoItem from './todo-item';
 import TodoForm from './todo-form';
-import Header from '../layout/header.js';
 // import PropTypes from 'prop-types';
 
 class TodoList extends React.Component {
@@ -9,12 +8,12 @@ class TodoList extends React.Component {
     listOfTodo : [
       {
         id: 1,
-        title: "wash cloth",
+        title: "need to do nested route (react)",
         isCompleted: true
       },
       {
         id: 2,
-        title: "complete react",
+        title: "multiple component data share",
         isCompleted: true
       },
       {
@@ -25,6 +24,21 @@ class TodoList extends React.Component {
       {
         id: 4,
         title: "buy headfone, toy",
+        isCompleted: false
+      },
+      {
+        id: 5,
+        title: "from submit and validation",
+        isCompleted: false
+      },
+      {
+        id: 6,
+        title: "Styled component",
+        isCompleted: false
+      },
+      {
+        id: 6,
+        title: "detail about react-route-dom properties",
         isCompleted: false
       }
     ]
@@ -69,7 +83,6 @@ class TodoList extends React.Component {
   render() {
     return(
     <div>
-      <Header />
       <TodoForm addTodo={this.addTodo} filterTodo={this.filterTodo} />
       <div>
         { this.state.listOfTodo.map(
