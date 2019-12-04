@@ -4,12 +4,14 @@ import './app-shell.css';
 import TodoList from '../../components/todo/todo-list';
 import About from '../about';
 import Header from '../../components/layout/header';
+import Quotes from '../quotes/quotes'
 
 function AppShell() {
   return (
     <Router>
       <div className="container">
         <Header />
+
         <Route exact path="/"
           render={props => (
             <React.Fragment>
@@ -21,6 +23,13 @@ function AppShell() {
           render={props => (
             <React.Fragment>
               <About />
+            </React.Fragment>
+          )} />
+
+        <Route exact path="/quotes"
+          render={props => (
+            <React.Fragment>
+              <Quotes />
             </React.Fragment>
           )} />
 

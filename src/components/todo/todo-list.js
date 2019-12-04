@@ -37,7 +37,7 @@ class TodoList extends React.Component {
         isCompleted: false
       },
       {
-        id: 6,
+        id: 7,
         title: "detail about react-route-dom properties",
         isCompleted: false
       }

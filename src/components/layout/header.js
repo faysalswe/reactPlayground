@@ -7,7 +7,9 @@ export default function Header() {
             <h1>Todo List</h1>
             <hr />
             <div>
-                <Link to="/"> Home </Link> | <Link to="/about"> About </Link>
+                <Link to="/"> Home </Link> |
+                <Link to="/about"> About </Link> |
+                <Link to="/quotes"> Quotes </Link>
             </div>
         </header>
     )
