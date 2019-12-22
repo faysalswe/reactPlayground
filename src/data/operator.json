@@ -1,0 +1,20 @@
+{
+    "operators": [
+        {
+            "key": "airtel",
+            "value": "Airtel"
+        },
+        {
+            "key": "robi",
+            "value": "Robi"
+        },
+        {
+            "key": "gp",
+            "value": "Grameen Phone"
+        },
+        {
+            "key": "tk",
+            "value": "taletalk"
+        }
+    ]
+}
