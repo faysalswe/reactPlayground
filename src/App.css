@@ -1,10 +1,9 @@
-.img-container {
-    border-radius: 14rem;
-    height: 25rem;
-    width: 20rem;
+.App {
+    text-align: center;
 }
 
-.container{
-padding-top: 5%;
-padding-left: 40%;
+h1 {
+    font-family: 'Bigelow Rules';
+    font-size: 72px;
+    color: #0ccac4;
 }
