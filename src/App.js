@@ -1,7 +1,7 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import EmployeeForm from './components/EmployeeForm';
+import EmployeeForm  from './components/employee/employee.component';
+
 
 class App extends React.Component {
   render() {
