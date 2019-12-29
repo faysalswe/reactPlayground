@@ -1,7 +1,7 @@
 import React from 'react';
 import './employee.styles.css';
 import {Mobile} from '../mobile/mobile.component';    
-import { Must, Min, Max } from '../../validator';
+// import { Must, Min, Max } from '../../validator';
 
 export default class EmployeeForm extends React.Component {
   constructor() {
@@ -14,7 +14,6 @@ export default class EmployeeForm extends React.Component {
         country: '',
         isHeadOffice: false,
         mobiles: [this.initMobileNumber()],
-        validation: null
       }
     };
   }
@@ -28,8 +27,6 @@ export default class EmployeeForm extends React.Component {
     this.setState({ employee });
     //this.setState({ [e.target.name]: e.target.value });
     console.log("employee change", employee);
-
-    this.setState({validation: "validation message"});
   }
 
   onSubmit = (e) => {
@@ -50,6 +47,8 @@ export default class EmployeeForm extends React.Component {
 
   // #region mobile
   newMobileNumber = (e) => {
+    console.log("newMobileNumber");
+    
     e.preventDefault();
     const employee = { ...this.state.employee };
     employee.mobiles = [...employee.mobiles, this.initMobileNumber()];
@@ -71,15 +70,17 @@ export default class EmployeeForm extends React.Component {
     const employee = { ...this.state.employee };
     employee.mobiles[index][event.target.name] = event.target.value;
     this.setState({ employee });
+    
     console.log("mobile change", employee, index, event.target.name, event.target.value);
   }
 // #endregion
   render() {
-    const { fullName, email, country, isHeadOffice, mobiles, validation } = this.state.employee;
+    const { fullName, email, country, isHeadOffice, mobiles } = this.state.employee;
     return (
       <div>
         <h3> Employee Form </h3>
-        <form  onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
+
           <div className="form-group">
             <label htmlFor="fullName">Full name</label>
             <input 
@@ -88,20 +89,10 @@ export default class EmployeeForm extends React.Component {
             className="form-control" 
             id="fullName"
             value={fullName}
-            // onChange={this.onChange.bind(this, [required, Min(3), Max(6)])}
-            onChange={(e) => { this.onChange(e); 
-              const message = `${Min(e.target.value, 3)}, ${Must(e.target.value)} ,${Max(e.target.value, 6)}`;
-              console.log("message",  message);
-              this.setState({validation: message});
-              }
-            }
+            onChange={this.onChange}
             />
-            { validation ?
-              <small className="">
-                validation
-              </small> : null
-            }
           </div>
+
           <div className="form-group">
             <label htmlFor="email">Email address</label>
             <input 
@@ -117,6 +108,7 @@ export default class EmployeeForm extends React.Component {
             className="form-text text-muted"
             >We'll never share your email with anyone else.</small>
           </div>
+
           <div className="form-group">
             <label htmlFor="country">Country</label>
             <input 
@@ -127,6 +119,7 @@ export default class EmployeeForm extends React.Component {
             value={country}
             onChange={this.onChange}/>
           </div>
+
           <div className="form-group form-check">
             <input 
             type="checkbox" 
@@ -140,11 +133,21 @@ export default class EmployeeForm extends React.Component {
             htmlFor="isHeadOffice"> 
             Head office </label>
           </div>
+
           <div>
-            <Mobile mobiles={mobiles} 
-            newMobileNumber={this.mobileNumber} 
-            deleteMobileNumber={this.deleteMobileNumber}
-            handleMobileChange={this.onChangeMobile}/>
+          {
+            mobiles.map((mobile, index) => 
+              <Mobile 
+                key={index}
+                index={index}
+                length={mobiles.length}
+                mobile={mobile} 
+                newMobileNumber={this.newMobileNumber} 
+                deleteMobileNumber={this.deleteMobileNumber.bind(this, index)}
+                handleMobileChange={this.onChangeMobile.bind(this, index)}
+              />
+            )
+          }
           </div>
           <button className="btn btn-primary"> Save </button>
         </form>
