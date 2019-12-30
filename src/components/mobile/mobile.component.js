@@ -23,7 +23,7 @@ export const Mobile = ({ index, length, mobile, newMobileNumber, deleteMobileNum
             className="form-control"
             id="mobileNumber"
             name="mobileNumber"
-            placeholder="01675996843"
+            placeholder="1675996843"
             value={mobile.mobileNumber}
             onChange={handleMobileChange} />
         </div>
@@ -68,15 +68,15 @@ export const Mobile = ({ index, length, mobile, newMobileNumber, deleteMobileNum
         {
           ((length - 1) === index) ?
             <div>
-              <button className="btn btn-success" onClick={newMobileNumber}> + </button>
+              <button className="btn btn-success" onClick={newMobileNumber}> Add </button>
               {
                 (length !== 1) ?
-                  <button className="btn btn-danger" onClick={deleteMobileNumber}>&times;</button>
+                  <button className="btn btn-danger" onClick={deleteMobileNumber}>Delete</button>
                   : ''
               }
             </div>
             :
-            <button className="btn btn-danger" onClick={deleteMobileNumber}> &times; </button>
+            <button className="btn btn-danger" onClick={deleteMobileNumber}>Delete</button>
         }
       </div>
     </div>

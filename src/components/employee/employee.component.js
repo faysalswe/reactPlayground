@@ -23,7 +23,7 @@ export default class EmployeeForm extends React.Component {
   onChange = e => {
     const employee = {...this.state.employee};
     //employee.mobiles = [...employee.mobiles, this.initMobileNumber(id)];
-    employee[e.target.name] = e.target.value;
+    employee[e.target.name] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({ employee });
     //this.setState({ [e.target.name]: e.target.value });
     console.log("employee change", employee);
@@ -33,7 +33,7 @@ export default class EmployeeForm extends React.Component {
     e.preventDefault();
     console.log("onSubmit", this.state.employee);
 
-    fetch("my-post-url", {
+    fetch("my-test/url", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +41,14 @@ export default class EmployeeForm extends React.Component {
       body: JSON.stringify(this.state.employee)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then((data) => {
+      let myData = [];
+      console.log("before", myData);
+      data.forEach(element => {
+        myData.push(element);
+      });
+      console.log("after", myData);
+    })
     .catch(err => console.log(err))
   }
 
@@ -68,14 +75,14 @@ export default class EmployeeForm extends React.Component {
 
   onChangeMobile = (index, event) => {
     const employee = { ...this.state.employee };
-    employee.mobiles[index][event.target.name] = event.target.value;
+    employee.mobiles[index][event.target.name] =  event.target.type === "checkbox" ? event.target.checked : event.target.value;
     this.setState({ employee });
     
     console.log("mobile change", employee, index, event.target.name, event.target.value);
   }
 // #endregion
   render() {
-    const { fullName, email, country, isHeadOffice, mobiles } = this.state.employee;
+    const { fullName, email, country, mobiles } = this.state.employee;
     return (
       <div>
         <h3> Employee Form </h3>
@@ -126,7 +133,7 @@ export default class EmployeeForm extends React.Component {
             name="isHeadOffice" 
             className="form-check-input" 
             id="isHeadOffice"
-            value={isHeadOffice}
+           
             onChange={this.onChange}/>
             <label 
             className="form-check-label" 
