@@ -5,8 +5,8 @@ function App() {
   return (
     <div className="container">
       <img className="img-container" src={background} alt="faysal.dev"/>
-      <h1> Under construction !</h1>
-      <p> faysal.dev under construction for very long time because i couldn't put things together. </p>
+      <h1> Under construction faysal.dev !</h1>
+      <h4> It's hard to put things together. </h4>
     </div>
   );
 }
