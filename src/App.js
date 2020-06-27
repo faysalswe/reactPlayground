@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import faysal from './assets/faysal.png';
+import background from './assets/background.svg';
 function App() {
   return (
     <div className="container">
-      <img className="img-container" src={faysal} alt="faysal"/>
-      <h1>Faysal Ahmmad</h1>
-      <h3>I am a software engineer, professionally working on asp net core and angular stack.</h3>
-       <h3> Also love deployment, automation.</h3>
+      <img className="img-container" src={background} alt="faysal.dev"/>
+      <h1> Under construction !</h1>
+      <p> faysal.dev under construction for very long time because i couldn't put things together. </p>
     </div>
   );
 }
